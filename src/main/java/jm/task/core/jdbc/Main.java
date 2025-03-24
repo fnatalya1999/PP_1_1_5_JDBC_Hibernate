@@ -1,7 +1,7 @@
 package jm.task.core.jdbc;
 
-import jm.task.core.jdbc.dao.UserDao;
-import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
+import jm.task.core.jdbc.service.UserService;
+import jm.task.core.jdbc.service.UserServiceImpl;
 import jm.task.core.jdbc.util.Util;
 
 
@@ -10,18 +10,18 @@ public class Main {
 
         Util.getSessionFactory();
 
-        UserDao daoHibernateImpl = new UserDaoHibernateImpl();
-        daoHibernateImpl.createUsersTable();
+        UserService service = new UserServiceImpl();
+        service.createUsersTable();
 
-        daoHibernateImpl.saveUser("natalia", "faritova", (byte) 30);
-        daoHibernateImpl.saveUser("natalia1", "faritova1", (byte) 31);
-        daoHibernateImpl.saveUser("natalia2", "faritova2", (byte) 32);
-        daoHibernateImpl.saveUser("natalia3", "faritova3", (byte) 33);
+        service.saveUser("natalia", "faritova", (byte) 30);
+        service.saveUser("natalia1", "faritova1", (byte) 31);
+        service.saveUser("natalia2", "faritova2", (byte) 32);
+        service.saveUser("natalia3", "faritova3", (byte) 33);
 
-        daoHibernateImpl.removeUserById(2);
-        daoHibernateImpl.getAllUsers();
-        daoHibernateImpl.cleanUsersTable();
-        daoHibernateImpl.dropUsersTable();
+        service.removeUserById(2);
+        service.getAllUsers();
+        service.cleanUsersTable();
+        service.dropUsersTable();
     }
 }
 
